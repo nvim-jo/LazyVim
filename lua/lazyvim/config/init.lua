@@ -10,7 +10,7 @@ local defaults = {
   -- colorscheme can be a string like `catppuccin` or a function that will load the colorscheme
   ---@type string|fun()
   colorscheme = function()
-    require("tokyonight").load()
+    require("catppuccin").load()
   end,
   -- load the default settings
   defaults = {
@@ -18,6 +18,13 @@ local defaults = {
     keymaps = true, -- lazyvim.config.keymaps
     -- lazyvim.config.options can't be configured here since that's loaded before lazyvim setup
     -- if you want to disable loading options, add `package.loaded["lazyvim.config.options"] = true` to the top of your init.lua
+  },
+  news = {
+    -- When enabled, NEWS.md will be shown when changed.
+    -- This only contains big new features and breaking changes.
+    lazyvim = false,
+    -- Same but for Neovim's news.txt
+    neovim = false,
   },
   -- icons used by other plugins
   -- stylua: ignore
@@ -123,6 +130,7 @@ local defaults = {
 M.json = {
   data = {
     version = nil, ---@type string?
+    hashes = {}, ---@type table<string, string>
     extras = {}, ---@type string[]
   },
 }
@@ -173,6 +181,7 @@ function M.setup(opts)
       M.load("keymaps")
 
       Util.format.setup()
+      Util.news.setup()
 
       vim.api.nvim_create_user_command("LazyRoot", function()
         Util.root.info()
