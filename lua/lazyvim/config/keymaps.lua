@@ -4,6 +4,8 @@ local Util = require("lazyvim.util")
 -- DO NOT USE THIS IN YOU OWN CONFIG!!
 -- use `vim.keymap.set` instead
 local map = Util.safe_keymap_set
+local which_map = Util.which_map
+local get_icon = Util.icon.get_icon
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -158,3 +160,21 @@ map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+-- which key map
+which_map({"n", "v"}, {
+  ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },
+  ["<leader>b"] = { name = get_icon("Buffer", 1, true).."Buffer" },
+  ["<leader>c"] = { name = get_icon("Code", 1, true).."Code" },
+  ["<leader>f"] = { name = get_icon("Find", 1, true).."Find" },
+  ["<leader>g"] = { name = get_icon("Git", 1, true).."Git" },
+  ["<leader>gh"] = { name = "+hunks" },
+  ["<leader>q"] = { name = get_icon("Session", 1, true).."Session" },
+  ["<leader>s"] = { name = get_icon("Search", 1, true).."Search" },
+  ["<leader>u"] = { name = get_icon("UI", 1, true).."UI" },
+  ["<leader>w"] = { name = get_icon("Window", 1, true).."Windows" },
+  ["<leader>x"] = { name = get_icon("Diagnostic", 1, true).."Diagnostics" },
+  ["<leader>j"] = { name = get_icon("Vim", 1, true).."JoVim" },
+  ["<leader>l"] = { name = get_icon("Lazy", 1, true).."Lazy" },
+  ["<leader>t"] = { name = get_icon("Toggle", 1, true).."Toggle"}
+}, {})

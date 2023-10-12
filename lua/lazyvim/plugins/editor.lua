@@ -282,6 +282,7 @@ return {
     event = "VeryLazy",
     opts = {
       plugins = { spelling = true },
+      icons = { group = vim.g.icons_enabled and "" or "+", separator = "" },
       defaults = {
         mode = { "n", "v" },
         ["g"] = { name = "+goto" },

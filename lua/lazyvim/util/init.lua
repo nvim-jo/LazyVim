@@ -171,4 +171,12 @@ function M.safe_keymap_set(mode, lhs, rhs, opts)
   end
 end
 
+function M.which_map(mode, mappings, opts)
+  local wk = require('which-key')
+  wk.register(mappings, {
+    mode = mode,
+    opts
+  })
+end
+
 return M
