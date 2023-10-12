@@ -132,8 +132,8 @@ map("n", "<leader>lc", function () Util.news.changelog() end, {desc = "LazyVim C
 
 -- floating terminal
 local lazyterm = function() Util.terminal(nil, { cwd = Util.root() }) end
-map("n", "<leader>ft", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
-map("n", "<leader>fT", function() Util.terminal() end, { desc = get_icon("Terminal", 1, true).."Terminal (cwd)" })
+map("n", "<leader>tt", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
+map("n", "<leader>tT", function() Util.terminal() end, { desc = get_icon("Terminal", 1, true).."Terminal (cwd)" })
 map("n", "<c-/>", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
 map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
 
