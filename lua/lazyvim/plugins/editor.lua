@@ -288,17 +288,7 @@ return {
         ["gs"] = { name = "+surround" },
         ["]"] = { name = "+next" },
         ["["] = { name = "+prev" },
-        ["<leader><tab>"] = { name = Util.icon.get_icon("Tab", 1, true).."Tabs" },
-        ["<leader>b"] = { name = Util.icon.get_icon("Buffer", 1, true).."Buffer" },
-        ["<leader>c"] = { name = Util.icon.get_icon("Code", 1, true).."Code" },
-        ["<leader>f"] = { name = Util.icon.get_icon("Find", 1, true).."Find" },
-        ["<leader>g"] = { name = Util.icon.get_icon("Git", 1, true).."Git" },
-        ["<leader>gh"] = { name = "+hunks" },
-        ["<leader>q"] = { name = Util.icon.get_icon("Session", 1, true).."Session" },
-        ["<leader>s"] = { name = Util.icon.get_icon("Search", 1, true).."Search" },
-        ["<leader>u"] = { name = Util.icon.get_icon("UI", 1, true).."UI" },
-        ["<leader>w"] = { name = Util.icon.get_icon("Window", 1, true).."Windows" },
-        ["<leader>x"] = { name = Util.icon.get_icon("Diagnostic", 1, true).."Diagnostics" },
+        
       },
     },
     config = function(_, opts)
