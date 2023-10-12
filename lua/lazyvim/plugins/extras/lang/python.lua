@@ -72,6 +72,7 @@ return {
           "env",
           ".env",
         },
+        parents = 0,
       })
     end,
     keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
