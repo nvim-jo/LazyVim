@@ -161,6 +161,11 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
+-- file tree
+map("n", "<leader>e", function()
+  require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").root() })
+end, { desc = get_icon("FileTree", 1, true).."File Explorer", remap = true })
+
 -- file browser
 map("n", "<leader><space>", function()
   require "telescope".extensions.file_browser.file_browser()
