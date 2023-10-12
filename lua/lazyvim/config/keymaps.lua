@@ -161,6 +161,11 @@ map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
+-- file browser
+map("n", "<leader><space>", function()
+  require "telescope".extensions.file_browser.file_browser()
+end, { desc = get_icon("Path", 1, true).."File Browser", noremap = true})
+
 -- which key map
 which_map({"n", "v"}, {
   ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },
