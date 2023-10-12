@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("User", {
 
 return {
   {
-    "LazyVim/LazyVim",
+    "nvim-jo/LazyVim",
     config = function(_, opts)
       opts = opts or {}
       -- disable the colorscheme
