@@ -3,7 +3,7 @@ local Util = require("lazyvim.util")
 ---@class LazyVimConfig: LazyVimOptions
 local M = {}
 
-M.version = "10.0.0" -- x-release-please-version
+M.version = "10.1.0" -- x-release-please-version
 
 ---@class LazyVimOptions
 local defaults = {
@@ -128,6 +128,7 @@ local defaults = {
 }
 
 M.json = {
+  version = 1,
   data = {
     version = nil, ---@type string?
     hashes = {}, ---@type table<string, string>
@@ -144,16 +145,10 @@ function M.json.load()
     local ok, json = pcall(vim.json.decode, data, { luanil = { object = true, array = true } })
     if ok then
       M.json.data = vim.tbl_deep_extend("force", M.json.data, json or {})
+      if M.json.data.version ~= M.json.version then
+        Util.json.migrate()
+      end
     end
-  end
-end
-
-function M.json.save()
-  local path = vim.fn.stdpath("config") .. "/lazyvim.json"
-  local f = io.open(path, "w")
-  if f then
-    f:write(vim.json.encode(M.json.data))
-    f:close()
   end
 end
 

@@ -13,6 +13,7 @@ local LazyUtil = require("lazy.core.util")
 ---@field inject lazyvim.util.inject
 ---@field icon lazyvim.util.icon
 ---@field news lazyvim.util.news
+---@field json lazyvim.util.json
 local M = {}
 
 ---@type table<string, string|string[]>
@@ -23,11 +24,30 @@ local deprecated = {
   root_patterns = { "root", "patterns" },
   get_root = { "root", "get" },
   float_term = { "terminal", "open" },
-  toggle = { "toggle", "option" },
   toggle_diagnostics = { "toggle", "diagnostics" },
   toggle_number = { "toggle", "number" },
   fg = "ui",
 }
+
+setmetatable(M, {
+  __index = function(t, k)
+    if LazyUtil[k] then
+      return LazyUtil[k]
+    end
+    local dep = deprecated[k]
+    if dep then
+      local mod = type(dep) == "table" and dep[1] or dep
+      local key = type(dep) == "table" and dep[2] or k
+      M.deprecate([[require("lazyvim.util").]] .. k, [[require("lazyvim.util").]] .. mod .. "." .. key)
+      ---@diagnostic disable-next-line: no-unknown
+      t[mod] = require("lazyvim.util." .. mod) -- load here to prevent loops
+      return t[mod][key]
+    end
+    ---@diagnostic disable-next-line: no-unknown
+    t[k] = require("lazyvim.util." .. k)
+    return t[k]
+  end,
+})
 
 setmetatable(M, {
   __index = function(t, k)
