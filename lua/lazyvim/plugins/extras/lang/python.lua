@@ -12,7 +12,13 @@ return {
     opts = {
       servers = {
         pyright = {},
-        ruff_lsp = {},
+        ruff_lsp = {
+          init_options = {
+            settings = {
+              args = { '--line-length=120'}
+            }
+          }
+        },
       },
       setup = {
         ruff_lsp = function()
