@@ -55,6 +55,7 @@ return {
   Highlight = "󰸱",
   Lazy = "󰒲 ",
   LineNumber = "",
+  RelativeLineNumber = "",
   LSPLoaded = "", -- TODO: Remove unused icon in AstroNvim v4
   LSPLoading1 = "",
   LSPLoading2 = "󰀚",

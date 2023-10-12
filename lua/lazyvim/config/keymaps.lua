@@ -100,17 +100,17 @@ end, { desc = "Format" })
 -- stylua: ignore start
 
 -- toggle options
-map("n", "<leader>tf", function() Util.format.toggle() end, { desc = "Toggle auto format (global)" })
-map("n", "<leader>tF", function() Util.format.toggle(true) end, { desc = "Toggle auto format (buffer)" })
-map("n", "<leader>ts", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
-map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
-map("n", "<leader>tL", function() Util.toggle("relativenumber") end, { desc = "Toggle Relative Line Numbers" })
-map("n", "<leader>tl", function() Util.toggle.number() end, { desc = "Toggle Line Numbers" })
-map("n", "<leader>td", function() Util.toggle.diagnostics() end, { desc = "Toggle Diagnostics" })
+map("n", "<leader>tf", function() Util.format.toggle() end, { desc = get_icon("Format", 1, true).."Toggle auto format (global)" })
+map("n", "<leader>tF", function() Util.format.toggle(true) end, { desc = get_icon("Format", 1, true).."Toggle auto format (buffer)" })
+map("n", "<leader>ts", function() Util.toggle("spell") end, { desc =  get_icon("Spellcheck", 1, true).."Toggle Spelling" })
+map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = get_icon("WordWrap", 1, true).."Toggle Word Wrap" })
+map("n", "<leader>tL", function() Util.toggle("relativenumber") end, { desc = get_icon("RelativeLineNumber", 1, true).."Toggle Relative Line Numbers" })
+map("n", "<leader>tl", function() Util.toggle.number() end, { desc = get_icon("LineNumber", 1, true).."Toggle Line Numbers" })
+map("n", "<leader>td", function() Util.toggle.diagnostics() end, { desc = get_icon("Diagnostic", 1, true).."Toggle Diagnostics" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-map("n", "<leader>tc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
+map("n", "<leader>tc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = get_icon("Conceal", 1, true).."Toggle Conceal" })
 if vim.lsp.inlay_hint then
-  map("n", "<leader>th", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints" })
+  map("n", "<leader>th", function() vim.lsp.inlay_hint(0, nil) end, { desc = get_icon("Bulb", 1, true).."Toggle Inlay Hints" })
 end
 
 -- lazygit
@@ -132,9 +132,9 @@ map("n", "<leader>lc", function () Util.news.changelog() end, {desc = "LazyVim C
 
 -- floating terminal
 local lazyterm = function() Util.terminal(nil, { cwd = Util.root() }) end
-map("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<leader>fT", function() Util.terminal() end, { desc = "Terminal (cwd)" })
-map("n", "<c-/>", lazyterm, { desc = "Terminal (root dir)" })
+map("n", "<leader>ft", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
+map("n", "<leader>fT", function() Util.terminal() end, { desc = get_icon("Terminal", 1, true).."Terminal (cwd)" })
+map("n", "<c-/>", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
 map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
 
 -- Terminal Mappings
@@ -143,7 +143,7 @@ map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
 map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
 map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
-map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+map("t", "<C-/>", "<cmd>close<cr>", { desc = get_icon("Terminal", 1, true).."Hide Terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
 -- windows
