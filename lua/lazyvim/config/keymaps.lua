@@ -185,7 +185,6 @@ which_map({"n", "v"}, {
   ["<leader>u"] = { name = get_icon("UI", 1, true).."UI" },
   ["<leader>w"] = { name = get_icon("Window", 1, true).."Windows" },
   ["<leader>x"] = { name = get_icon("Diagnostic", 1, true).."Diagnostics" },
-  ["<leader>j"] = { name = get_icon("Vim", 1, true).."JoVim" },
   ["<leader>l"] = { name = get_icon("Lazy", 1, true).."Lazy" },
   ["<leader>t"] = { name = get_icon("Toggle", 1, true).."Toggle"}
 }, {})
