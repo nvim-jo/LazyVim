@@ -11,6 +11,7 @@ local LazyUtil = require("lazy.core.util")
 ---@field plugin lazyvim.util.plugin
 ---@field extras lazyvim.util.extras
 ---@field inject lazyvim.util.inject
+---@field icon lazyvim.util.icon
 local M = {}
 
 ---@type table<string, string|string[]>
