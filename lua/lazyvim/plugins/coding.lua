@@ -39,7 +39,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      "saadparwaiz1/cmp_luasnip",
     },
     opts = function()
       vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -52,11 +51,6 @@ return {
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered()
-        },
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -77,7 +71,6 @@ return {
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
-          { name = "luasnip" },
           { name = "path" },
         }, {
           { name = "buffer" },
