@@ -172,6 +172,9 @@ map("n", "<leader><space>", function()
   require "telescope".extensions.file_browser.file_browser()
 end, { desc = get_icon("Path", 1, true).."File Browser", noremap = true})
 
+-- LSP
+map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
+
 -- which key map
 which_map({"n", "v"}, {
   ["<leader><tab>"] = { name = get_icon("Tab", 1, true).."Tabs" },
