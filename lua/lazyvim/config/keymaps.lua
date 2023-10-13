@@ -147,7 +147,7 @@ map("n", "<leader>ls", "<cmd>Lazy sync<cr>", { desc = "Synchronize Lazy" })
 map("n", "<leader>lc", function () Util.news.changelog() end, {desc = "LazyVim Changelog"})
 
 -- floating terminal
-local lazyterm = function() Util.terminal(nil, { cwd = Util.root() }) end
+local lazyterm = function() Util.terminal(nil, { cwd = Util.root(), border = "rounded" }) end
 map("n", "<leader>tt", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
 map("n", "<leader>tT", function() Util.terminal() end, { desc = get_icon("Terminal", 1, true).."Terminal (cwd)" })
 map("n", "<c-/>", lazyterm, { desc = get_icon("Terminal", 1, true).."Terminal (root dir)" })
