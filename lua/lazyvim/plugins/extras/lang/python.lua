@@ -15,7 +15,7 @@ return {
         ruff_lsp = {
           init_options = {
             settings = {
-              args = { '--line-length=120'}
+              args = { '--line-length=240'}
             }
           }
         },
