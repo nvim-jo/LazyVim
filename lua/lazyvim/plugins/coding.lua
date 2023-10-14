@@ -60,7 +60,10 @@ return {
             border = "rounded",
             winhighlight = "Normal:Pmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None"
           }),
-          documentation = cmp.config.window.bordered()
+          documentation = cmp.config.window.bordered({
+            border = "rounded",
+            winhighlight = "Normal:Pmenu,FloatBorder:CmpDocBorder,CursorLine:PmenuSel,Search:None"
+          })
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
