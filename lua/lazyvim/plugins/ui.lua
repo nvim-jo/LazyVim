@@ -27,7 +27,6 @@ return {
     },
     init = function()
       -- when noice is not enabled, install notify on VeryLazy
-      local Util = require("lazyvim.util")
       if not Util.has("noice.nvim") then
         Util.on_very_lazy(function()
           vim.notify = require("notify")
@@ -120,7 +119,6 @@ return {
       lualine_require.require = require
 
       local icons = require("lazyvim.config").icons
-      local Util = require("lazyvim.util")
 
       vim.o.laststatus = vim.g.lualine_laststatus
 
@@ -133,7 +131,9 @@ return {
         sections = {
           lualine_a = { "mode" },
           lualine_b = { "branch" },
+
           lualine_c = {
+            Util.lualine.root_dir(),
             {
               "diagnostics",
               symbols = {
@@ -143,12 +143,8 @@ return {
                 hint = icons.diagnostics.Hint,
               },
             },
-            { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-            {
-              function()
-                return Util.root.pretty_path()
-              end,
-            },
+            { "filetype",                icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+            { Util.lualine.pretty_path() },
           },
           lualine_x = {
             -- stylua: ignore
@@ -303,55 +299,16 @@ return {
         lsp_doc_border = true,
       },
     },
-    -- stylua: ignore
+   -- stylua: ignore
     keys = {
-      {
-        "<S-Enter>",
-        function() require("noice").redirect(vim.fn.getcmdline()) end,
-        mode = "c",
-        desc =
-        "Redirect Cmdline"
-      },
-      {
-        "<leader>snl",
-        function() require("noice").cmd("last") end,
-        desc =
-        "Noice Last Message"
-      },
-      {
-        "<leader>snh",
-        function() require("noice").cmd("history") end,
-        desc =
-        "Noice History"
-      },
+      { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
+      { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
+      { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
       { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
-      {
-        "<leader>snd",
-        function() require("noice").cmd("dismiss") end,
-        desc =
-        "Dismiss All"
-      },
-      {
-        "<c-f>",
-        function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,
-        silent = true,
-        expr = true,
-        desc =
-        "Scroll forward",
-        mode = {
-          "i", "n", "s" }
-      },
-      {
-        "<c-b>",
-        function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end,
-        silent = true,
-        expr = true,
-        desc =
-        "Scroll backward",
-        mode = {
-          "i", "n", "s" }
-      },
-    },
+      { "<leader>snd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
+      { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll forward", mode = {"i", "n", "s"} },
+      { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward", mode = {"i", "n", "s"}},
+    }, 
   },
 
   -- icons
@@ -405,7 +362,7 @@ return {
             { action = "Telescope live_grep", desc = " Find text", icon = " ", key = "g" },
             { action = Util.telescope.config_files(), desc = " Config", icon = " ", key = "c" },
             { action = 'lua require("persistence").load()', desc = " Restore Session", icon = " ", key = "s" },
-            { action = "LazyExtras", desc = " Lazy Extras", icon = " ", key = "e" },
+            { action = "LazyExtras", desc = " Lazy Extras", icon = " ", key = "x" },
             { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
             { action = "qa", desc = " Quit", icon = " ", key = "q" },
           },
