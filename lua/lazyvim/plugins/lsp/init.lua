@@ -83,6 +83,8 @@ return {
         require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
       end
 
+      require('lspconfig.ui.windows').default_options.border = 'rounded'
+
       -- setup autoformat
       Util.format.register(Util.lsp.formatter())
 
