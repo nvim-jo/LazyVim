@@ -139,11 +139,11 @@ map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- lazy
-map("n", "<leader>li", "<cmd>Lazy<cr>", { desc = "Lazy Information" })
+map("n", "<leader>lr", Util.root.info, { desc = "Lazy Information" })
 map("n", "<leader>ls", "<cmd>Lazy sync<cr>", { desc = "Synchronize Lazy" })
 
 -- LazyVim
-map("n", "<leader>lc", function () Util.news.changelog() end, {desc = "LazyVim Changelog"})
+map("n", "<leader>lc", Util.news.changelog, {desc = "LazyVim Changelog"})
 
 -- floating terminal
 local lazyterm = function() Util.terminal(nil, { cwd = Util.root(), border = "rounded" }) end
@@ -203,6 +203,7 @@ which_map({"n", "v"}, {
   ["<leader>u"] = { name = get_icon("UI", 1, true).."UI" },
   ["<leader>w"] = { name = get_icon("Window", 1, true).."Windows" },
   ["<leader>x"] = { name = get_icon("Diagnostic", 1, true).."Diagnostics" },
+  ["<leader>p"] = { name = get_icon("Package", 1, true).."Package" },
   ["<leader>l"] = { name = get_icon("Lazy", 1, true).."Lazy" },
   ["<leader>t"] = { name = get_icon("Toggle", 1, true).."Toggle"}
 }, {})
