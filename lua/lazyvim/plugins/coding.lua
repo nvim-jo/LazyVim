@@ -89,6 +89,7 @@ return {
           { name = "buffer" },
         }),
         formatting = {
+          fields = { 'kind', 'abbr' },
           format = function(_, item)
             local icons = require("lazyvim.config").icons.kinds
             if icons[item.kind] then
