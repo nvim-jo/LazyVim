@@ -15,6 +15,7 @@ local LazyUtil = require("lazy.core.util")
 ---@field news lazyvim.util.news
 ---@field json lazyvim.util.json
 ---@field lualine lazyvim.util.lualine
+---@field which lazyvim.util.which
 local M = {}
 
 ---@type table<string, string|string[]>
@@ -169,8 +170,8 @@ function M.safe_keymap_set(mode, lhs, rhs, opts)
   end
 end
 
-function M.which_map(mode, mappings, opts)
-  local wk = require('which-key')
+function M.safe_which_map(mode, mappings, opts)
+  local wk = require('lazyvim.util.which')
   wk.register(mappings, {
     mode = mode,
     opts
