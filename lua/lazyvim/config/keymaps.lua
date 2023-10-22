@@ -178,9 +178,13 @@ map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- file tree
-map("n", "<leader>e", function()
+map("n", "<leader>E", function()
   require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").root() })
-end, { desc = get_icon("FileTree", 1, true).."File Explorer", remap = true })
+end, { desc = get_icon("FileTree", 1, true).."File Explorer (root)", remap = true })
+
+map("n", "<leader>e", function()
+  require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+end, { desc = get_icon("FileTree", 1, true).."File Explorer (cwd)", remap = true })
 
 -- file browser
 map("n", "<leader><space>", function()
