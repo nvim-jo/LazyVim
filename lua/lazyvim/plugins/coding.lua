@@ -97,7 +97,7 @@ return {
             end
 
             local maxwidth = 60
-            if item.abbr > maxwidth then
+            if #item.abbr > maxwidth then
               item.abbr = item.abbr:sub(1, maxwidth)..'...'
             end
             return item
