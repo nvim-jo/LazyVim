@@ -57,9 +57,9 @@ return {
       -- },
       open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
       filesystem = {
-        bind_to_cwd = true,
+        bind_to_cwd = false,
         follow_current_file = { enabled = true },
-        use_libuv_file_watcher = false,
+        use_libuv_file_watcher = true,
       },
       window = {
         mappings = {
