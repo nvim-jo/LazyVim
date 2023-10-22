@@ -95,6 +95,7 @@ return {
             if icons[item.kind] then
               item.kind = icons[item.kind] .. item.kind
             end
+            item.abbr = string.sub(item.abbr, 1, 20)
             return item
           end,
         },
