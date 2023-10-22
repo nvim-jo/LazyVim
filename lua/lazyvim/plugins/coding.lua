@@ -93,7 +93,7 @@ return {
           format = function(_, item)
             local icons = require("lazyvim.config").icons.kinds
             if icons[item.kind] then
-              item.kind = icons[item.kind] .. item.kind
+              item.kind = icons[item.kind]
             end
 
             local maxwidth = 60
