@@ -170,7 +170,7 @@ function M.safe_keymap_set(mode, lhs, rhs, opts)
   end
 end
 
-function M.safe_which_map(mode, mappings, opts)
+function M.safe_which_key_map(mode, mappings, opts)
   local wk = require('lazyvim.util.which')
   wk.register(mappings, {
     mode = mode,

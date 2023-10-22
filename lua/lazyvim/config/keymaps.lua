@@ -4,7 +4,7 @@ local Util = require("lazyvim.util")
 -- DO NOT USE THIS IN YOU OWN CONFIG!!
 -- use `vim.keymap.set` instead
 local map = Util.safe_keymap_set
-local which_map = Util.safe_which_map
+local which_map = Util.safe_which_key_map
 local get_icon = Util.icon.get_icon
 
 -- better up/down
