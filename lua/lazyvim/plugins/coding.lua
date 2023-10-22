@@ -95,7 +95,11 @@ return {
             if icons[item.kind] then
               item.kind = icons[item.kind] .. item.kind
             end
-            item.abbr = string.sub(item.abbr, 1, 20)
+
+            local maxwidth = 60
+            if item.abbr > maxwidth then
+              item.abbr = item.abbr:sub(1, maxwidth)..'...'
+            end
             return item
           end,
         },
