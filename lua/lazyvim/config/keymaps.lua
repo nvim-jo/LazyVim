@@ -7,7 +7,7 @@ local map = Util.safe_keymap_set
 local which_map = Util.safe_which_key_map
 local get_icon = Util.icon.get_icon
 
--- better up/down
+-- better up/down (with arrow too)
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
