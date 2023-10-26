@@ -1,5 +1,62 @@
 # Changelog
 
+## 10.7.1 
+
+
+### Bug Fixes
+
+* **catppuccin:** trouble integration.
+* **util:** pcall deletion of lazy_file augroup.
+
+## 10.7.0 
+
+
+### Features
+
+* **nvim:** extend j/k enhancements to up/down arrows
+
+
+### Bug Fixes
+
+* **extras.python-semshi:** improve highlights
+* fix jdtls not spwaning in windows
+* **lang:** add cmakelint to ensure installed list
+
+## 10.6.0 
+
+
+### Features
+
+* **telescope:** sort buffers with lastused and mru
+
+
+### Bug Fixes
+
+* **markdown:** create default numbered Headline groups for colorschemes that dont support them.
+* **mini.hipatterns:** use `extmark_opts` instead of soft deprecated `priority`
+* **treesitter:** make treesitter queries available at startup. 
+
+
+### Performance Improvements
+
+* **markdown:** prevent headlines.nvim slowing down initial rendering with `nvim README.md`
+* **ui:** wrap treesitter.foldexpr and cache get_parser during a event loop tick. 
+
+## 10.5.0 
+
+
+### Features
+
+* **dashboard:** remove unnecessary brackets from keys
+
+
+### Bug Fixes
+
+* **conform:** allow overriding all conform format options.
+* **nvim-ts-autotag:** make it actually work :)
+* **tabnine:** run `:CmpTabnineHub` automatically on build
+* **treesitter-context:** set default max_lines=3
+
 ## 10.4.4 (2023-10-18)
 
 
