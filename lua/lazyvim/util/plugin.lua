@@ -153,4 +153,5 @@ function M.fix_renames()
   end)
 end
 
+-- Return
 return M
