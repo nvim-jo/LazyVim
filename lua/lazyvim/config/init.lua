@@ -3,7 +3,7 @@ local Util = require("lazyvim.util")
 ---@class LazyVimConfig: LazyVimOptions
 local M = {}
 
-M.version = "10.5.0" -- x-release-please-version
+M.version = "10.7.1" -- x-release-please-version
 
 ---@class LazyVimOptions
 local defaults = {
@@ -134,7 +134,7 @@ M.json = {
   version = 2,
   data = {
     version = nil, ---@type string?
-    hashes = {}, ---@type table<string, string>
+    news = {}, ---@type table<string, string>
     extras = {}, ---@type string[]
   },
 }

@@ -36,7 +36,8 @@ function M.setup()
   table.insert(package.loaders, function(module)
     if M.deprecated_modules[module] then
       Util.warn(
-        ("`%s` is no longer included by default in **LazyVim**.\nPlease install the `%s` extra if you still want to use it."):format(
+        ("`%s` is no longer included by default in **LazyVim**.\nPlease install the `%s` extra if you still want to use it.")
+        :format(
           module,
           M.deprecated_modules[module]
         ),
@@ -76,10 +77,12 @@ function M.lazy_file()
 
   local events = {} ---@type {event: string, buf: number, data?: any}[]
 
+  local done = false
   local function load()
-    if #events == 0 then
+    if #events == 0 or done then
       return
     end
+    done = true
     vim.api.nvim_del_augroup_by_name("lazy_file")
 
     ---@type table<string,string[]>
@@ -90,17 +93,19 @@ function M.lazy_file()
 
     vim.api.nvim_exec_autocmds("User", { pattern = "LazyFile", modeline = false })
     for _, event in ipairs(events) do
-      Event.trigger({
-        event = event.event,
-        exclude = skips[event.event],
-        data = event.data,
-        buf = event.buf,
-      })
-      if vim.bo[event.buf].filetype then
+      if vim.api.nvim_buf_is_valid(event.buf) then
         Event.trigger({
-          event = "FileType",
+          event = event.event,
+          exclude = skips[event.event],
+          data = event.data,
           buf = event.buf,
         })
+        if vim.bo[event.buf].filetype then
+          Event.trigger({
+            event = "FileType",
+            buf = event.buf,
+          })
+        end
       end
     end
     vim.api.nvim_exec_autocmds("CursorMoved", { modeline = false })
