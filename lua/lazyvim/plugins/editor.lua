@@ -146,7 +146,7 @@ return {
       },
       { "<leader>/", Util.telescope("live_grep"), desc = "Grep (root dir)" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-      { "<leader>E", Util.telescope("files"), desc = "Find Files (root dir)" },
+      -- { "<leader>E", Util.telescope("files"), desc = "Find Files (root dir)" },
       -- find
       { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
       { "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },

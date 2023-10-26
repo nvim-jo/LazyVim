@@ -189,7 +189,7 @@ map("n", "<leader>e", function()
 end, { desc = get_icon("FileTree", 1, true).."File Explorer (cwd)", remap = true })
 
 -- file browser
-map("n", "<leader><space>", function()
+map("n", "<leader>E", function()
   require "telescope".extensions.file_browser.file_browser()
 end, { desc = get_icon("Path", 1, true).."File Browser", noremap = true})
 
