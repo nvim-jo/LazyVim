@@ -1,3 +1,4 @@
+-- python-semshi
 return {
   -- "numiras/semshi",
   "wookayin/semshi", -- use a maintained fork
