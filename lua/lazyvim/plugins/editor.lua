@@ -152,7 +152,6 @@ return {
         "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
         desc = "Switch Buffer",
       },
-      { "<leader>fh", require('telescope').extensions.picker.picker, desc = "Picker List" },
       { "<leader>/", Util.telescope("live_grep"), desc = "Grep (root dir)" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
       -- { "<leader>E", Util.telescope("files"), desc = "Find Files (root dir)" },
