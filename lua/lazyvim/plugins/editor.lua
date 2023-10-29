@@ -138,14 +138,6 @@ return {
           end)
         end,
       },
-      {
-        "OliverChao/telescope-picker-list.nvim",
-        config = function()
-          Util.on_load("telescope.nvim", function()
-            require("telescope").load_extension("picker_list")
-          end)
-        end
-      }
     },
     keys = {
       {
@@ -232,38 +224,6 @@ return {
       end
 
       return {
-        extensions = {
-          picker_list = {
-            opts = {
-              emoji = require("telescope.themes").get_dropdown({})
-            }
-          },
-          excluded_pickers = {
-            "fzf",
-            "fd",
-          },
-          -- user defined pickers
-          user_pickers = {
-            {
-              "todo-comments",
-              function()
-                vim.cmd([[TodoTelescope theme=dropdown]])
-              end,
-            },
-            {
-              "urlview local",
-              function()
-                vim.cmd([[UrlView]])
-              end,
-            },
-            {
-              "urlview lazy",
-              function()
-                vim.cmd([[UrlView lazy]])
-              end,
-            },
-          },
-        },
         defaults = {
           prompt_prefix = " ",
           selection_caret = " ",
