@@ -84,7 +84,7 @@ return {
       local events = require("neo-tree.events")
       opts.event_handlers = opts.event_handlers or {}
       vim.list_extend(opts.event_handlers, {
-        { event = events.FILE_MOVED, handler = on_move },
+        { event = events.FILE_MOVED,   handler = on_move },
         { event = events.FILE_RENAMED, handler = on_move },
       })
       require("neo-tree").setup(opts)
@@ -139,10 +139,10 @@ return {
         end,
       },
       {
-        "nvim-jo/picker.nvim",
-        config = function ()
-          Util.on_load("telescope.nvim", function ()
-            require("telescope").load_extension("picker")
+        "OliverChao/telescope-picker-list.nvim",
+        config = function()
+          Util.on_load("telescope.nvim", function()
+            require("telescope").load_extension("picker_list")
           end)
         end
       }
@@ -153,40 +153,45 @@ return {
         "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
         desc = "Switch Buffer",
       },
-      { "<leader>/", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-      { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+      { "<leader>/",  Util.telescope("live_grep"),                                       desc = "Grep (root dir)" },
+      { "<leader>:",  "<cmd>Telescope command_history<cr>",                              desc = "Command History" },
       -- { "<leader>E", Util.telescope("files"), desc = "Find Files (root dir)" },
       -- find
-      { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
-      { "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
-      { "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
-      { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-      { "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }), desc = "Recent (cwd)" },
+      { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",     desc = "Buffers" },
+      { "<leader>ff", Util.telescope("files"),                                           desc = "Find Files (root dir)" },
+      { "<leader>fF", Util.telescope("files", { cwd = false }),                          desc = "Find Files (cwd)" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                                     desc = "Recent" },
+      { "<leader>fR", Util.telescope("oldfiles", { cwd = vim.loop.cwd() }),              desc = "Recent (cwd)" },
       -- git
-      { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
-      { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
+      { "<leader>gc", "<cmd>Telescope git_commits<CR>",                                  desc = "commits" },
+      { "<leader>gs", "<cmd>Telescope git_status<CR>",                                   desc = "status" },
       -- search
-      { '<leader>s"', "<cmd>Telescope registers<cr>", desc = "Registers" },
-      { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
-      { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
-      { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-      { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
-      { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document diagnostics" },
-      { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace diagnostics" },
-      { "<leader>sg", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-      { "<leader>sG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
-      { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-      { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
-      { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
-      { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
-      { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
-      { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
-      { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
-      { "<leader>sw", Util.telescope("grep_string", { word_match = "-w" }), desc = "Word (root dir)" },
+      { '<leader>s"', "<cmd>Telescope registers<cr>",                                    desc = "Registers" },
+      { "<leader>sa", "<cmd>Telescope autocommands<cr>",                                 desc = "Auto Commands" },
+      { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>",                    desc = "Buffer" },
+      { "<leader>sc", "<cmd>Telescope command_history<cr>",                              desc = "Command History" },
+      { "<leader>sC", "<cmd>Telescope commands<cr>",                                     desc = "Commands" },
+      { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>",                          desc = "Document diagnostics" },
+      { "<leader>sD", "<cmd>Telescope diagnostics<cr>",                                  desc = "Workspace diagnostics" },
+      { "<leader>sg", Util.telescope("live_grep"),                                       desc = "Grep (root dir)" },
+      { "<leader>sG", Util.telescope("live_grep", { cwd = false }),                      desc = "Grep (cwd)" },
+      { "<leader>sh", "<cmd>Telescope help_tags<cr>",                                    desc = "Help Pages" },
+      { "<leader>sH", "<cmd>Telescope highlights<cr>",                                   desc = "Search Highlight Groups" },
+      { "<leader>sk", "<cmd>Telescope keymaps<cr>",                                      desc = "Key Maps" },
+      { "<leader>sM", "<cmd>Telescope man_pages<cr>",                                    desc = "Man Pages" },
+      { "<leader>sm", "<cmd>Telescope marks<cr>",                                        desc = "Jump to Mark" },
+      { "<leader>so", "<cmd>Telescope vim_options<cr>",                                  desc = "Options" },
+      { "<leader>sR", "<cmd>Telescope resume<cr>",                                       desc = "Resume" },
+      { "<leader>sw", Util.telescope("grep_string", { word_match = "-w" }),              desc = "Word (root dir)" },
       { "<leader>sW", Util.telescope("grep_string", { cwd = false, word_match = "-w" }), desc = "Word (cwd)" },
-      { "<leader>sw", Util.telescope("grep_string"), mode = "v", desc = "Selection (root dir)" },
-      { "<leader>sW", Util.telescope("grep_string", { cwd = false }), mode = "v", desc = "Selection (cwd)" },
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>sw", Util.telescope("grep_string"),                                     mode = "v",
+                                                                                                                             desc =
+        "Selection (root dir)" },
+      { "<leader>sW", Util.telescope("grep_string", { cwd = false }),                    mode = "v",
+                                                                                                                             desc =
+        "Selection (cwd)" },
+      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }),          desc =
+      "Colorscheme with preview" },
       {
         "<leader>ss",
         function()
@@ -227,6 +232,38 @@ return {
       end
 
       return {
+        extensions = {
+          picker_list = {
+            opts = {
+              emoji = require("telescope.themes").get_dropdown({})
+            }
+          },
+          excluded_pickers = {
+            "fzf",
+            "fd",
+          },
+          -- user defined pickers
+          user_pickers = {
+            {
+              "todo-comments",
+              function()
+                vim.cmd([[TodoTelescope theme=dropdown]])
+              end,
+            },
+            {
+              "urlview local",
+              function()
+                vim.cmd([[UrlView]])
+              end,
+            },
+            {
+              "urlview lazy",
+              function()
+                vim.cmd([[UrlView lazy]])
+              end,
+            },
+          },
+        },
         defaults = {
           prompt_prefix = " ",
           selection_caret = " ",
@@ -275,11 +312,14 @@ return {
     opts = {},
     -- stylua: ignore
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "S",     mode = { "n", "o", "x" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end,
+                                                                                                  desc =
+        "Treesitter Search" },
+      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc =
+      "Toggle Flash Search" },
     },
   },
 
@@ -329,7 +369,7 @@ return {
         ["gs"] = { name = "+surround" },
         ["]"] = { name = "+next" },
         ["["] = { name = "+prev" },
-        
+
       },
     },
     config = function(_, opts)
@@ -452,10 +492,10 @@ return {
     cmd = { "TroubleToggle", "Trouble" },
     opts = { use_diagnostic_signs = true },
     keys = {
-      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Document Diagnostics (Trouble)" },
       { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-      { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-      { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+      { "<leader>xL", "<cmd>TroubleToggle loclist<cr>",               desc = "Location List (Trouble)" },
+      { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>",              desc = "Quickfix List (Trouble)" },
       {
         "[q",
         function()
@@ -496,12 +536,12 @@ return {
     config = true,
     -- stylua: ignore
     keys = {
-      { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+      { "]t",         function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+      { "[t",         function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+      { "<leader>xt", "<cmd>TodoTrouble<cr>",                              desc = "Todo (Trouble)" },
+      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>",      desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>st", "<cmd>TodoTelescope<cr>",                            desc = "Todo" },
+      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>",    desc = "Todo/Fix/Fixme" },
     },
   },
 }
