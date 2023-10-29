@@ -119,6 +119,7 @@ return {
     cmd = "Telescope",
     version = false, -- telescope did only one release, so use HEAD for now
     dependencies = {
+      -- Dependencies
       {
         "nvim-jo/file-browser.nvim",
         config = function()
