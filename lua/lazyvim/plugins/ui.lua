@@ -77,6 +77,7 @@ return {
         right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
         diagnostics = "nvim_lsp",
         always_show_bufferline = false,
+        show_close_icon = false,
         diagnostics_indicator = function(_, _, diag)
           local icons = require("lazyvim.config").icons.diagnostics
           local ret = (diag.error and icons.Error .. diag.error .. " " or "")
