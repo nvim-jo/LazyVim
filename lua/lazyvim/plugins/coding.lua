@@ -55,6 +55,7 @@ return {
             require("luasnip").lsp_expand(args.body)
           end,
         },
+        -- Custom Window UI
         window = {
           completion = cmp.config.window.bordered({
             border = "rounded",
