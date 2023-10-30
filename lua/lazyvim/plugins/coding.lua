@@ -98,9 +98,9 @@ return {
             end
 
             local maxwidth = 60
+            item.abbr = string.gsub(item.abbr, "~", "")
             if #item.abbr > maxwidth then
               item.abbr = item.abbr:sub(1, maxwidth)
-              item.abbr = string.gsub(item.abbr, "~", "")
             end
             return item
           end,
