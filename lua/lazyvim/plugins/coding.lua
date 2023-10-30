@@ -90,7 +90,7 @@ return {
           { name = "buffer" },
         }),
         formatting = {
-          fields = { 'kind', 'abbr', 'menu' },
+          fields = { 'kind', 'abbr' },
           format = function(_, item)
             local icons = require("lazyvim.config").icons.kinds
             if icons[item.kind] then
@@ -100,6 +100,7 @@ return {
             local maxwidth = 60
             if #item.abbr > maxwidth then
               item.abbr = item.abbr:sub(1, maxwidth)
+              item.abbr = string.gsub(item.abbr, "~", "")
             end
             return item
           end,
