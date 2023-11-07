@@ -326,7 +326,9 @@ return {
       key_labels = {
         ["<space>"] = "SPC",
         ["<leader>"] = "SPC",
-        ["<tab>"] = "TAB"
+        ["<tab>"] = "TAB",
+        ["<bs>"] = "BS",
+        ["<esc>"] = "ESC"
       },
       defaults = {
         mode = { "n", "v" },
