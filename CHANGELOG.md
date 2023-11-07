@@ -1,5 +1,21 @@
 # Changelog
 
+## 10.8.0
+
+
+### Features
+
+* **catppuccin:** enable more integrations
+
+
+### Bug Fixes
+
+* **extras:** dont show extras that give errors (user's extras).
+* **mini.indentscope:** remove duplicated filetype
+* **plugin:** LazyFile now properly deals with deleted buffers.
+* **sessions:** added folds to sessions
+* **spectre:** don't build nvim-spectre 
+
 ## 10.7.1 
 
 
