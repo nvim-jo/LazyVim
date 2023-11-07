@@ -323,6 +323,11 @@ return {
     opts = {
       plugins = { spelling = true },
       icons = { group = vim.g.icons_enabled and "" or "+", separator = "" },
+      key_labels = {
+        ["<space>"] = "SPC",
+        ["<leader>"] = "SPC",
+        ["<tab>"] = "TAB"
+      },
       defaults = {
         mode = { "n", "v" },
         ["g"] = { name = "+goto" },
