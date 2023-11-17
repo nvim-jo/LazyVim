@@ -49,6 +49,20 @@ return {
       end
     end,
     opts = {
+      event_handlers = {
+        {
+          event = "neo_tree_buffer_enter",
+          handler = function()
+            vim.wo.cursorline = false
+          end
+        },
+        {
+          event = "neo_tree_buffer_leave",
+          handler = function()
+            vim.wo.cursorline = true
+          end
+        }
+      },
       popup_border_style = "rounded",
       sources = { "filesystem", "buffers", "git_status", "document_symbols" },
       -- source_selector = {
