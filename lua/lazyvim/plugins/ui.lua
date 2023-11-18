@@ -213,8 +213,35 @@ return {
   },
 
   -- indent guides for Neovim
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   event = "LazyFile",
+  --   opts = {
+  --     indent = {
+  --       char = "│",
+  --       tab_char = "│",
+  --     },
+  --     scope = { enabled = false },
+  --     exclude = {
+  --       filetypes = {
+  --         "help",
+  --         "alpha",
+  --         "dashboard",
+  --         "neo-tree",
+  --         "Trouble",
+  --         "lazy",
+  --         "mason",
+  --         "notify",
+  --         "toggleterm",
+  --         "lazyterm",
+  --       },
+  --     },
+  --   },
+  --   main = "ibl",
+  -- },
+
   {
-    "lukas-reineke/indent-blankline.nvim",
+    "nvim-jo/indent-guide.nvim",
     event = "LazyFile",
     opts = {
       indent = {
@@ -237,7 +264,6 @@ return {
         },
       },
     },
-    main = "ibl",
   },
 
   -- Active indent guide and indent text objects. When you're browsing
