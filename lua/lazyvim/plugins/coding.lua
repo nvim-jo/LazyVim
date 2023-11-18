@@ -63,7 +63,7 @@ return {
           }),
           documentation = cmp.config.window.bordered({
             border = "rounded",
-            winhighlight = "Normal:Normal,FloatBorder:CmpDocBorder,CursorLine:CmpCursorLine,Search:None"
+            winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder,CursorLine:CmpCursorLine,Search:None"
           })
         },
         mapping = cmp.mapping.preset.insert({
