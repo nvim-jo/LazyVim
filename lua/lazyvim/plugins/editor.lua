@@ -51,6 +51,12 @@ return {
     opts = {
       event_handlers = {
         {
+          event = "file_opened",
+          handler = function(file_path)
+            require("neo-tree.command").execute({ action = "close" })
+          end
+        },
+        {
           event = "neo_tree_buffer_enter",
           handler = function()
             vim.wo.cursorline = false
