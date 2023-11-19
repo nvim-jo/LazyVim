@@ -93,9 +93,11 @@ return {
               end
             end
           
-            if node:get_depth() == 1 and node.type ~= "message" then
+            if node:get_depth() == 1 then
               highlight = highlights.ROOT_NAME
-              text = node.name
+              if node.type ~= "message" then
+               text = vim.fs.basename(vim.loop.cwd() or '') 
+              end
             else
               local M = require('neo-tree.sources.common.components')
               local filtered_by = M.filtered_by(config, node, state)
