@@ -83,11 +83,53 @@ return {
         hijack_netrw_behavior = "disabled",
         components = {
           name = function(config, node, state)
-            local name = components.name(config, node, state)
-            if node:get_depth() == 1 then
-              name.text = vim.fs.basename(vim.loop.cwd() or '')
+            local highlights = require("neo-tree.ui.highlights")
+            local highlight = config.highlight or highlights.FILE_NAME
+            local text = node.name
+            if node.type == "directory" then
+              highlight = highlights.DIRECTORY_NAME
+              if config.trailing_slash and text ~= "/" then
+                text = text .. "/"
+              end
             end
-            return name
+          
+            if node:get_depth() == 1 and node.type ~= "message" then
+              highlight = highlights.ROOT_NAME
+              text = node.name
+            else
+              local filtered_by = M.filtered_by(config, node, state)
+              highlight = filtered_by.highlight or highlight
+              if config.use_git_status_colors then
+                local git_status = state.components.git_status({}, node, state)
+                if git_status and git_status.highlight then
+                  highlight = git_status.highlight
+                end
+              end
+            end
+          
+            local hl_opened = config.highlight_opened_files
+            if hl_opened then
+              local opened_buffers = state.opened_buffers or {}
+              if
+                (hl_opened == "all" and opened_buffers[node.path])
+                or (opened_buffers[node.path] and opened_buffers[node.path].loaded)
+              then
+                highlight = highlights.FILE_NAME_OPENED
+              end
+            end
+          
+            if type(config.right_padding) == "number" then
+              if config.right_padding > 0 then
+                text = text .. string.rep(" ", config.right_padding)
+              end
+            else
+              text = text
+            end
+          
+            return {
+              text = text,
+              highlight = highlight,
+            } 
           end,
           icon = function(config, node, state)
             local list = { "services", "utils", "util", "service", "config", "configs" }
