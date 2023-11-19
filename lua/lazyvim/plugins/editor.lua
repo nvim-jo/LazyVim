@@ -152,6 +152,10 @@ return {
 
             if node:get_depth() == 1 then
               icon = ""
+              return {
+                text = icon,
+                highlight = highlight,
+              }
             else
               if node.type == "directory" then
                 highlight = highlights.DIRECTORY_ICON
