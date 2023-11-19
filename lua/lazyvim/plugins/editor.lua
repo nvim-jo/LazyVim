@@ -82,6 +82,13 @@ return {
         use_libuv_file_watcher = true,
         hijack_netrw_behavior = "disabled",
         components = {
+          name = function(config, node, state)
+            local name = components.name(config, node, state)
+            if node:get_depth() == 1 then
+              name.text = vim.fs.basename(vim.loop.cwd() or '')
+            end
+            return name
+          end,
           icon = function(config, node, state)
             local list = { "services", "utils", "util", "service", "config", "configs" }
             local function isStringInList(str)
@@ -90,7 +97,7 @@ return {
                   return true
                 end
               end
-              return false 
+              return false
             end
 
             local highlights = require("neo-tree.ui.highlights")
@@ -248,14 +255,26 @@ return {
       { "<leader>sR", "<cmd>Telescope resume<cr>",                                       desc = "Resume" },
       { "<leader>sw", Util.telescope("grep_string", { word_match = "-w" }),              desc = "Word (root dir)" },
       { "<leader>sW", Util.telescope("grep_string", { cwd = false, word_match = "-w" }), desc = "Word (cwd)" },
-      { "<leader>sw", Util.telescope("grep_string"),                                     mode = "v",
-                                                                                                                             desc =
-        "Selection (root dir)" },
-      { "<leader>sW", Util.telescope("grep_string", { cwd = false }),                    mode = "v",
-                                                                                                                             desc =
-        "Selection (cwd)" },
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }),          desc =
-      "Colorscheme with preview" },
+      {
+        "<leader>sw",
+        Util.telescope("grep_string"),
+        mode = "v",
+        desc =
+        "Selection (root dir)"
+      },
+      {
+        "<leader>sW",
+        Util.telescope("grep_string", { cwd = false }),
+        mode = "v",
+        desc =
+        "Selection (cwd)"
+      },
+      {
+        "<leader>uC",
+        Util.telescope("colorscheme", { enable_preview = true }),
+        desc =
+        "Colorscheme with preview"
+      },
       {
         "<leader>ss",
         function()
@@ -344,14 +363,23 @@ return {
     opts = {},
     -- stylua: ignore
     keys = {
-      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n", "o", "x" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end,
-                                                                                                  desc =
-        "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc =
-      "Toggle Flash Search" },
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
+      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o",               function() require("flash").remote() end,     desc = "Remote Flash" },
+      {
+        "R",
+        mode = { "o", "x" },
+        function() require("flash").treesitter_search() end,
+        desc =
+        "Treesitter Search"
+      },
+      {
+        "<c-s>",
+        mode = { "c" },
+        function() require("flash").toggle() end,
+        desc =
+        "Toggle Flash Search"
+      },
     },
   },
 
