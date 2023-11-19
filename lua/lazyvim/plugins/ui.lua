@@ -279,8 +279,9 @@ return {
       -- symbol = "▏",
       draw = {
         delay = 20,
+        animation = function(s, n) return 10 end,
       },
-      symbol = "│-",
+      symbol = "│",
       options = { try_as_border = true },
     },
     init = function()
