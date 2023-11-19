@@ -180,12 +180,12 @@ return {
                   highlight = hl or highlight
                 end
               end
-            end
 
-            return {
-              text = icon .. padding,
-              highlight = highlight,
-            }
+              return {
+                text = icon .. padding,
+                highlight = highlight,
+              }
+            end
           end,
         },
       },
