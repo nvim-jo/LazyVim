@@ -151,7 +151,7 @@ return {
             local padding = config.padding or " "
             local highlight = config.highlight or highlights.FILE_ICON
 
-            if node:get_depth() == 1 then
+            if node:get_depth() == 2 then
               if node:is_expanded() then
                 if isStringInList(node.name) then
                   icon = " "
