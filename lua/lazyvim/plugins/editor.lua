@@ -165,7 +165,7 @@ return {
                   icon = " " .. (config.folder_closed or "+")
                 end 
               end
-              icon = ""
+              highlight = highlights.DIRECTORY_ICON
               return {
                 text = icon,
                 highlight = highlight,
