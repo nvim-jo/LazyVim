@@ -242,7 +242,7 @@ return {
 
   {
     "nvim-jo/indent-guide.nvim",
-    enabled = false,
+    -- enabled = false,
     event = "LazyFile",
     opts = {
       indent = {
