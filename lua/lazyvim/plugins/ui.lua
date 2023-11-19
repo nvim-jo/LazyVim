@@ -280,7 +280,7 @@ return {
       draw = {
         delay = 20,
       },
-      symbol = "│",
+      symbol = "│-",
       options = { try_as_border = true },
     },
     init = function()
