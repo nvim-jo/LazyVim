@@ -165,11 +165,7 @@ return {
                   icon = " " .. (config.folder_closed or "+")
                 end 
               end
-              highlight = highlights.DIRECTORY_ICON
-              return {
-                text = icon,
-                highlight = highlight,
-              }
+              highlight = highlights.ROOT_NAME
             else
               if node.type == "directory" then
                 highlight = highlights.DIRECTORY_ICON
