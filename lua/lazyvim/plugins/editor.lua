@@ -151,46 +151,29 @@ return {
             local padding = config.padding or " "
             local highlight = config.highlight or highlights.FILE_ICON
 
-            if node:get_depth() == 2 then
+            if node.type == "directory" then
+              highlight = highlights.DIRECTORY_ICON
               if node:is_expanded() then
                 if isStringInList(node.name) then
-                  icon = " "
+                  icon = ""
                 else
-                  icon = " "..(config.folder_open or "-")
+                  icon = config.folder_open or "-"
                 end
               else
                 if isStringInList(node.name) then
-                  icon = " "
+                  icon = ""
                 else
-                  icon = " " .. (config.folder_closed or "+")
-                end 
-              end
-              highlight = highlights.ROOT_NAME
-            else
-              if node.type == "directory" then
-                highlight = highlights.DIRECTORY_ICON
-                if node:is_expanded() then
-                  if isStringInList(node.name) then
-                    icon = ""
-                  else
-                    icon = config.folder_open or "-"
-                  end
-                else
-                  if isStringInList(node.name) then
-                    icon = ""
-                  else
-                    icon = config.folder_closed or "+"
-                  end
-                end
-              elseif node.type == "file" then
-                local success, web_devicons = pcall(require, "nvim-web-devicons")
-                if success then
-                  local devicon, hl = web_devicons.get_icon(node.name, node.ext)
-                  icon = devicon or icon
-                  highlight = hl or highlight
+                  icon = config.folder_closed or "+"
                 end
               end
-            end
+            elseif node.type == "file" then
+              local success, web_devicons = pcall(require, "nvim-web-devicons")
+              if success then
+                local devicon, hl = web_devicons.get_icon(node.name, node.ext)
+                icon = devicon or icon
+                highlight = hl or highlight
+              end
+            end 
 
             return {
               text = icon .. padding,
