@@ -97,6 +97,7 @@ return {
               highlight = highlights.ROOT_NAME
               text = node.name
             else
+              local M = require('neo-tree.sources.common.components')
               local filtered_by = M.filtered_by(config, node, state)
               highlight = filtered_by.highlight or highlight
               if config.use_git_status_colors then
