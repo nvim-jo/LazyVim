@@ -83,6 +83,16 @@ return {
         hijack_netrw_behavior = "disabled",
         components = {
           icon = function(config, node, state)
+            local list = { "services", "utils", "util", "service", "config", "configs" }
+            local function isStringInList(str)
+              for _, listItem in ipairs(list) do
+                if string.lower(listItem) == string.lower(str) then
+                  return true
+                end
+              end
+              return false 
+            end
+
             local highlights = require("neo-tree.ui.highlights")
             local icon = config.default or " "
             local padding = config.padding or " "
@@ -91,9 +101,17 @@ return {
             if node.type == "directory" then
               highlight = highlights.DIRECTORY_ICON
               if node:is_expanded() then
-                icon = config.folder_open or "-"
+                if isStringInList(node.name) then
+                  icon = ""
+                else
+                  icon = config.folder_open or "-"
+                end
               else
-                icon = config.folder_closed or "+"
+                if isStringInList(node.name) then
+                  icon = ""
+                else
+                  icon = config.folder_closed or "+"
+                end
               end
             elseif node.type == "file" then
               local success, web_devicons = pcall(require, "nvim-web-devicons")
