@@ -49,6 +49,8 @@ return {
       end
     end,
     opts = {
+      hide_root_node = true, -- Hide the root node.
+      retain_hidden_root_indent = true,
       -- hide_root_node = true,
       event_handlers = {
         {
