@@ -150,6 +150,10 @@ return {
             local padding = config.padding or " "
             local highlight = config.highlight or highlights.FILE_ICON
 
+            if node:get_depth() == 1 then
+              icon = "" 
+            end
+
             if node.type == "directory" then
               highlight = highlights.DIRECTORY_ICON
               if node:is_expanded() then
