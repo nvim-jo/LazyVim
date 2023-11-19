@@ -49,6 +49,7 @@ return {
       end
     end,
     opts = {
+      hide_root_node = true,
       event_handlers = {
         {
           event = "file_opened",
@@ -83,10 +84,6 @@ return {
         hijack_netrw_behavior = "disabled",
         components = {
           name = function(config, node, state)
-            local function startsWith(str, prefix)
-              return string.sub(str, 1, string.len(prefix)) == prefix
-            end
-
             local highlights = require("neo-tree.ui.highlights")
             local highlight = config.highlight or highlights.FILE_NAME
             local text = node.name
@@ -100,7 +97,7 @@ return {
             if node:get_depth() == 1 then
               highlight = highlights.ROOT_NAME
               if node.type ~= "message" then
-                text = "Explorer: " .. vim.fs.basename(vim.loop.cwd() or '')
+                text = vim.fs.basename(vim.loop.cwd() or '')
               end
             else
               local M = require('neo-tree.sources.common.components')
@@ -125,17 +122,13 @@ return {
               end
             end
 
-            if startsWith(text, "Explorer:") then
-              text = text
-            else
-              if type(config.right_padding) == "number" then
-                if config.right_padding > 0 then
-                  text = text .. string.rep(" ", config.right_padding)
-                end
-              else
-                text = text
+            if type(config.right_padding) == "number" then
+              if config.right_padding > 0 then
+                text = text .. string.rep(" ", config.right_padding)
               end
-            end
+            else
+              text = text
+            end 
 
             return {
               text = text,
