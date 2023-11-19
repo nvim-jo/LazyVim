@@ -96,7 +96,7 @@ return {
             if node:get_depth() == 1 then
               highlight = highlights.ROOT_NAME
               if node.type ~= "message" then
-               text = vim.fs.basename(vim.loop.cwd() or '') 
+               text = "Explorer: "..vim.fs.basename(vim.loop.cwd() or '') 
               end
             else
               local M = require('neo-tree.sources.common.components')
@@ -187,6 +187,18 @@ return {
         },
       },
       default_component_configs = {
+        symbols = {
+          added     = "",
+          deleted   = "",
+          modified  = "",
+          renamed   = "",
+          -- Status type
+          untracked = "",
+          ignored   = "",
+          unstaged  = "󰄱",
+          staged    = "",
+          conflict  = "",
+        },
         icon = {
           folder_closed = "",
           folder_open = "",
