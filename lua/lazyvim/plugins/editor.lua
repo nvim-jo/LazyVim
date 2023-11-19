@@ -190,12 +190,12 @@ return {
                   highlight = hl or highlight
                 end
               end
-
-              return {
-                text = icon .. padding,
-                highlight = highlight,
-              }
             end
+
+            return {
+              text = icon .. padding,
+              highlight = highlight,
+            }
           end,
         },
       },
