@@ -152,6 +152,19 @@ return {
             local highlight = config.highlight or highlights.FILE_ICON
 
             if node:get_depth() == 1 then
+              if node:is_expanded() then
+                if isStringInList(node.name) then
+                  icon = " "
+                else
+                  icon = " "..(config.folder_open or "-")
+                end
+              else
+                if isStringInList(node.name) then
+                  icon = " "
+                else
+                  icon = " " .. (config.folder_closed or "+")
+                end 
+              end
               icon = ""
               return {
                 text = icon,
