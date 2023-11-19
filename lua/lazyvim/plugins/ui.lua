@@ -278,7 +278,7 @@ return {
     opts = {
       -- symbol = "▏",
       draw = {
-        delay = 0,
+        delay = 20,
       },
       symbol = "│",
       options = { try_as_border = true },
