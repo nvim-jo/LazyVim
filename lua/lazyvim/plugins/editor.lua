@@ -151,7 +151,7 @@ return {
             local highlight = config.highlight or highlights.FILE_ICON
 
             if node:get_depth() == 1 then
-              icon = ""
+              icon = "-"
               return {
                 text = icon,
                 highlight = highlight,
