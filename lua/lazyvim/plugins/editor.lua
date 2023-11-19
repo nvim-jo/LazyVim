@@ -49,11 +49,6 @@ return {
       end
     end,
     opts = {
-      icon = {
-        folder_closed = "",
-        folder_open = "",
-        folder_empty = "",
-      },
       event_handlers = {
         {
           event = "neo_tree_buffer_enter",
@@ -87,6 +82,11 @@ return {
         },
       },
       default_component_configs = {
+        icon = {
+          folder_closed = "",
+          folder_open = "",
+          folder_empty = "",
+        },
         indent = {
           with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
           expander_collapsed = "",
