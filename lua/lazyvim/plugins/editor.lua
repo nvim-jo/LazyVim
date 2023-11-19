@@ -49,6 +49,11 @@ return {
       end
     end,
     opts = {
+      icon = {
+        folder_closed = "",
+        folder_open = "",
+        folder_empty = "",
+      },
       event_handlers = {
         {
           event = "neo_tree_buffer_enter",
