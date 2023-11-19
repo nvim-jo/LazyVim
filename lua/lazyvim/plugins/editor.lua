@@ -154,16 +154,34 @@ return {
             if node.type == "directory" then
               highlight = highlights.DIRECTORY_ICON
               if node:is_expanded() then
+                local expander_expanded = ""
                 if isStringInList(node.name) then
-                  icon = ""
+                  if node:get_depth() == 2 then
+                    icon = expander_expanded..""
+                  else
+                    icon = ""
+                  end
                 else
-                  icon = config.folder_open or "-"
+                  if node:get_depth() == 2 then
+                    icon = expander_expanded..(config.folder_open or "-")
+                  else
+                    icon = config.folder_open or "-"
+                  end
                 end
               else
+                local expander_collapsed = ""
                 if isStringInList(node.name) then
-                  icon = ""
+                  if node:get_depth() == 2 then
+                    icon = expander_collapsed..""
+                  else
+                    icon = ""
+                  end
                 else
-                  icon = config.folder_closed or "+"
+                  if node:get_depth() == 2 then
+                    icon = expander_collapsed..(config.folder_closed or "+")
+                  else
+                    icon = config.folder_closed or "+"
+                  end
                 end
               end
             elseif node.type == "file" then
