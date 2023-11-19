@@ -125,7 +125,7 @@ return {
               end
             end
 
-            if startsWith(text) == "Explorer:" then
+            if startsWith(text, "Explorer:") then
               text = text
             else
               if type(config.right_padding) == "number" then
