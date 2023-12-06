@@ -128,9 +128,13 @@ map("n", "<leader>tl", function() Util.toggle.number() end, { desc = get_icon("L
 map("n", "<leader>td", function() Util.toggle.diagnostics() end, { desc = get_icon("Diagnostic", 1, true).."Toggle Diagnostics" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>tc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = get_icon("Conceal", 1, true).."Toggle Conceal" })
-if vim.lsp.inlay_hint then
-  map("n", "<leader>th", function() vim.lsp.inlay_hint(0, nil) end, { desc = get_icon("Bulb", 1, true).."Toggle Inlay Hints" })
+if vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint then
+  map( "n", "<leader>th", function() Util.toggle.inlay_hints() end, { desc = get_icon("Bulb", 1, true).."Toggle Inlay Hints" })
 end
+
+-- if vim.lsp.inlay_hint then
+--   map("n", "<leader>th", function() vim.lsp.inlay_hint(0, nil) end, { desc = get_icon("Bulb", 1, true).."Toggle Inlay Hints" })
+-- end
 map("n", "<leader>uT", function() if vim.b.ts_highlight then vim.treesitter.stop() else vim.treesitter.start() end end, { desc = "Toggle Treesitter Highlight" })
 
 -- lazygit
